@@ -22,4 +22,4 @@ bool is_full(List *li);
 
 bool is_empty(List *li);
 
-void append_to_list(List *li);
+void append_to_list(List *li, student st);

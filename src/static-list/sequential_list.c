@@ -46,11 +46,7 @@ bool is_empty(List *li) {
   }
 }
 
-void append_to_list(List *li, student st) {
-  if (li == NULL) {
-    return -1;
-  } else {
-    li->qtd++;
-    li->st;
-  }
+void append_to_list(List *li, struct student st) {
+  li->st = struct strudent st;
+  li->qtd++;
 }

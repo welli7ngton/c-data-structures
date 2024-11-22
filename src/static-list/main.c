@@ -3,10 +3,7 @@
 
 int main(int argc, char *argv[]) {
   List *my_list = create_list();
-  student st = {};
-
-  st.register_number = 1234;
-  st.name = "welli7ngton";
+  struct student st = {1234, "welli7ngton", 1.0, 2.0, 3.0};
 
   append_to_list(my_list, st);
   printf("\nfull: %d", is_full(my_list));
