@@ -26,4 +26,6 @@ bool is_full(List *li);
 
 bool is_empty(List *li);
 
-void append_to_list(List *li, Student st);
+int append_to_end(List *li, Student st);
+
+int append_to_start(List *li, Student st);
