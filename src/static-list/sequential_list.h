@@ -4,13 +4,17 @@
 #define MAX 100
 
 // struct exemplo de tipo de dado dinâmico a ser inserido na lista
-struct student {
+typedef struct student {
   int register_number;
   char name[30];
   float n1, n2, n3;
-};
+} Student;
 
-typedef struct list List;
+// implementação da lista
+typedef struct list {
+  int qtd;
+  struct student data[MAX];
+} List;
 
 List *create_list();
 
@@ -22,4 +26,4 @@ bool is_full(List *li);
 
 bool is_empty(List *li);
 
-void append_to_list(List *li, student st);
+void append_to_list(List *li, Student st);

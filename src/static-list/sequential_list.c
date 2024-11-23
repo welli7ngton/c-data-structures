@@ -3,12 +3,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-// implementação da lista
-struct list {
-  int qtd;
-  struct student data[MAX];
-};
-
 List *create_list() {
   List *li;
   li = (List *)malloc(sizeof(struct list));
@@ -47,6 +41,6 @@ bool is_empty(List *li) {
 }
 
 void append_to_list(List *li, struct student st) {
-  li->st = struct strudent st;
+  li->data[li->qtd] = st;
   li->qtd++;
 }
