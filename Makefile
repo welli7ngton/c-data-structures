@@ -1,15 +1,15 @@
+# Nome do arquivo a ser testado (passado como parâmetro)
+TEST ?= 
 
-SRC_DIR = src/static-list
+SRC_DIR = src
 TEST_DIR = test
 
 CC = gcc
 CFLAGS = -Wall -Wextra -g
 
-# Nome do teste (passado como parâmetro)
-TEST ?= 
 
-SOURCES = ${SRC_DIR}/sequential_list.c ${TEST_DIR}/test_static_list.c
-HEADERS = ${SRC_DIR}/sequential_list.h
+SOURCES = ${SRC_DIR}/${TEST}/${TEST}.c ${TEST_DIR}/${TEST}.c
+HEADERS = ${SRC_DIR}/${TEST}/${TEST}.h
 
 EXEC = ${TEST}.test
 
@@ -19,6 +19,6 @@ ${EXEC}: $(SOURCES) ${HEADERS}
 	${CC} $(CFLAGS) -o ${EXEC} $(SOURCES)
 
 clean:
-	rm -f ${EXEC}
+	rm -f *.test
 
 rebuild: clean all

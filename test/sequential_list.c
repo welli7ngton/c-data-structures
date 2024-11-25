@@ -1,4 +1,4 @@
-#include "../src/static-list/sequential_list.h"
+#include "../src/sequential_list/sequential_list.h"
 #include "./test_helpers.h"
 #include <stdio.h>
 
