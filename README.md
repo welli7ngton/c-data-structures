@@ -14,9 +14,9 @@ Bem-vindo ao repositório **Estruturas de Dados em C**! Este projeto tem como ob
 ## Funcionalidades Implementadas
 
 ### 1. Lista Sequencial Estática
-- Arquivo fonte: `[src/sequential_list/sequential_list.c](./src/sequential_list/sequential_list.c)`
-- Cabeçalho: `[src/sequential_list/sequential_list.h](./src/sequential_list/sequential_list.h)`
-- Testes: `[test/sequential_list.c](./test/sequential_list.c)`
+- Arquivo fonte: [sequential_list.c](./src/sequential_list/sequential_list.c)
+- Cabeçalho: [sequential_list.h](./src/sequential_list/sequential_list.h)
+- Testes: [test/sequential_list.c](./test/sequential_list.c)
 - **Descrição**: Uma lista estática que armazena elementos em um array fixo, permitindo operações básicas como inserção no final, inicio, organizada (sorted), remoção por index, remoção por dado, busca por index e busca por dado. Estou usando uma estrutura de dados personalizada simulando o cadastro de um aluno para ter um dado dinâmico para trabalhar.
 
 ## Como Usar
