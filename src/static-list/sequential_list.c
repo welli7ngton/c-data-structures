@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <strings.h>
 
 List *create_list() {
   List *li;
@@ -66,5 +67,91 @@ int append_to_start(List *li, Student st) {
 
   li->data[0] = st;
   li->qtd++;
+  return 1;
+}
+
+int append_sorting(List *li, Student st) {
+  if (li == NULL) {
+    return -1;
+  }
+  if (is_full(li)) {
+    return -1;
+  }
+
+  int k, i = 0;
+  // Enquanto i for menor que o tamanho da lista e o numero da matricula da
+  // da posição i for menor que o aluno passado como parâmetro, incremente o i
+  while (i < li->qtd && li->data[i].register_number < st.register_number) {
+    i++;
+  }
+  for (k = li->qtd - 1; k >= i; k--) {
+    li->data[k + 1] = li->data[k];
+  }
+  li->data[i] = st;
+  li->qtd++;
+  return 1;
+}
+
+int remove_from_start(List *li) {
+  if (li == NULL) {
+    return -1;
+  }
+
+  if (is_empty(li)) {
+    return -1;
+  }
+
+  for (int i = 0; i < li->qtd; i++) {
+    li->data[i] = li->data[i + 1];
+  }
+  li->qtd--;
+  return 1;
+}
+
+int remove_from_end(List *li) {
+  if (li == NULL) {
+    return -1;
+  }
+
+  if (is_empty(li)) {
+    return -1;
+  }
+
+  li->qtd--;
+  return 1;
+}
+
+// FIXME: need to be refactored, isin't worling properly.
+int remove_from_index(List *li, int idx) {
+  if (li->qtd - 1 < idx) {
+    // index out of range.
+    return -1;
+  }
+
+  if (is_empty(li)) {
+    // cannot remove items from an empty list.
+    return -1;
+  }
+
+  if (li == NULL) {
+    return -1;
+  }
+
+  int k, i = 0;
+  while (i < li->qtd && li->qtd != idx) {
+    i++;
+  }
+
+  if (i == li->qtd) {
+    return -1; // element not found.
+  }
+
+  for (k = i; k < li->qtd - 1; k++) {
+    // first K position is the item to be removed and K+1 is the next item in
+    // the list.
+    li->data[k] = li->data[k + 1];
+  }
+
+  li->qtd--;
   return 1;
 }

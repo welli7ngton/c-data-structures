@@ -29,3 +29,11 @@ bool is_empty(List *li);
 int append_to_end(List *li, Student st);
 
 int append_to_start(List *li, Student st);
+
+int append_sorting(List *li, Student st);
+
+int remove_from_start(List *li);
+
+int remove_from_end(List *li);
+
+int remove_from_index(List *li, int idx);
