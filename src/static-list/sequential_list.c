@@ -15,9 +15,16 @@ List *create_list() {
   return li;
 }
 
-// FIXME: this function isn't working properly, it doesn't clean the pointer and
-// do not free the memory, it keeps appending items to the list.
-void free_list(List *li) { free(li); }
+int free_list(List *li) {
+  if (li == NULL) {
+    return -1;
+  }
+  // free(li->data);
+  free(li);
+
+  li = create_list();
+  return 1;
+}
 
 int list_length(List *li) {
   if (li == NULL) {
@@ -121,9 +128,12 @@ int remove_from_end(List *li) {
   return 1;
 }
 
-// FIXME: need to be refactored, isin't worling properly.
 int remove_from_index(List *li, int idx) {
-  if (li->qtd - 1 < idx) {
+  if (li == NULL) {
+    return -1;
+  }
+
+  if (idx < 0 || idx >= li->qtd) {
     // index out of range.
     return -1;
   }
@@ -133,20 +143,7 @@ int remove_from_index(List *li, int idx) {
     return -1;
   }
 
-  if (li == NULL) {
-    return -1;
-  }
-
-  int k, i = 0;
-  while (i < li->qtd && li->qtd != idx) {
-    i++;
-  }
-
-  if (i == li->qtd) {
-    return -1; // element not found.
-  }
-
-  for (k = i; k < li->qtd - 1; k++) {
+  for (int k = idx; k < li->qtd - 1; k++) {
     // first K position is the item to be removed and K+1 is the next item in
     // the list.
     li->data[k] = li->data[k + 1];
