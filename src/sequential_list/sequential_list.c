@@ -152,3 +152,27 @@ int remove_from_index(List *li, int idx) {
   li->qtd--;
   return 1;
 }
+
+int get_by_index(List *li, int idx, struct student *st) {
+  if (li == NULL || idx >= li->qtd) {
+    return -1;
+  }
+  *st = li->data[idx];
+  return 1;
+}
+
+int get_by_register_number(List *li, int reg_number, struct student *st) {
+  if (li == NULL) {
+    return -1;
+  }
+
+  int i = 0;
+  while (i <= li->qtd - 1) {
+    if (reg_number == li->data[i].register_number) {
+      *st = li->data[i];
+      return 1;
+    }
+    i++;
+  }
+  return -1;
+}

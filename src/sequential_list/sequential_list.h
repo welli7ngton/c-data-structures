@@ -37,3 +37,7 @@ int remove_from_start(List *li);
 int remove_from_end(List *li);
 
 int remove_from_index(List *li, int idx);
+
+int get_by_index(List *li, int idx, struct student *st);
+
+int get_by_register_number(List *li, int reg_number, struct student *st);

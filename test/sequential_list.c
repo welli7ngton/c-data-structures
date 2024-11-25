@@ -1,6 +1,7 @@
 #include "../src/sequential_list/sequential_list.h"
 #include "./test_helpers.h"
 #include <stdio.h>
+#include <string.h>
 
 void test_create_list() {
   List *test_list = create_list();
@@ -158,6 +159,39 @@ void test_remove_from_index() {
          "remove_from_index() remove an item from its index.");
 }
 
+void test_get_by_index() {
+  List *test_list = create_list();
+  Student test_student1 = {1, "default", 10.0, 8.9, 9.7};
+  append_sorting(test_list, test_student1);
+
+  // A instance of Student to get the values from the function.
+  Student st2 = {};
+
+  get_by_index(test_list, 0, &st2);
+
+  ASSERT(st2.register_number == 1 && strcmp(st2.name, "default") == 0,
+         "get_by_index() get data from the list by id.");
+}
+
+void test_get_by_register_number() {
+  List *test_list = create_list();
+  Student test_student1 = {1, "default", 10.0, 8.9, 9.7};
+  Student test_student2 = {2, "default", 10.0, 8.9, 9.7};
+  Student test_student3 = {3, "itworked", 10.0, 8.9, 9.7};
+
+  append_to_end(test_list, test_student1);
+  append_to_end(test_list, test_student2);
+  append_to_end(test_list, test_student3);
+
+  Student st = {};
+
+  get_by_register_number(test_list, 3, &st);
+
+  ASSERT(st.register_number == 3 && strcmp(st.name, "itworked") == 0,
+         "get_by_register_number() return data from the list by the register "
+         "number of the student.");
+}
+
 int main() {
   printf("\nRunning tests for Sequential Static Lists...\n");
   printf("\n---------------------------------------------\n");
@@ -173,6 +207,8 @@ int main() {
   test_remove_from_start();
   test_remove_from_end();
   test_remove_from_index();
+  test_get_by_index();
+  test_get_by_register_number();
   printf(GREEN "\nAll tests passed!\n" RESET);
   printf("\n---------------------------------------------\n");
   return 0;
