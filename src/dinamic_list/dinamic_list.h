@@ -7,3 +7,5 @@ struct student {
 typedef struct element *List;
 
 List *create_list();
+
+void free_list(List *li);
