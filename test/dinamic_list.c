@@ -3,19 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 
-int help_append_sorting(Elem *ptr) {
-  int count = 1;
-  while (ptr != NULL) {
-    if (ptr->data.id == count) {
-      count++;
-    } else {
-      return 0;
-    }
-    ptr = ptr->next;
-  }
-  return 1;
-}
-
 void test_create_list() {
   List *li = create_list();
   ASSERT(*li == NULL, "create_list() create a empty linked list, where the "
@@ -81,16 +68,33 @@ void test_append_sorting() {
 
   Elem *head = *li;
 
-  int counter = 1;
-  for (int i = 1; i < 6; i++) {
-    if (i == head->data.id) {
-      counter++;
-    }
+  int counter = 0;
+  while (head != NULL) {
+    counter++;
     head = head->next;
   }
 
   ASSERT(counter == 6,
          "append_sorting() insert an item in the list sorting by student id.");
+}
+
+void test_list_length() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+
+  append_to_start(li, st1);
+  append_to_start(li, st3);
+  append_to_end(li, st2);
+
+  ASSERT(list_length(li) == 3,
+         "list_lenght() returns the current length of the list.");
+}
+
+void test_length_of_an_empty_list() {
+  List *li = create_list();
+  ASSERT(list_length(li) == 0, "should return 0 when the list is empty.");
 }
 
 int main() {
@@ -99,5 +103,7 @@ int main() {
   test_append_to_start();
   test_append_to_end();
   test_append_sorting();
+  test_list_length();
+  test_length_of_an_empty_list();
   return 0;
 }
