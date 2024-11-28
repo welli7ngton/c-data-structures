@@ -19,7 +19,6 @@ int free_list(List *li) {
   if (li == NULL) {
     return -1;
   }
-  // free(li->data);
   free(li);
 
   li = create_list();
