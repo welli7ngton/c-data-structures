@@ -95,7 +95,6 @@ int append_to_end(List *li, struct student st) {
   return 1;
 }
 
-// FIXME: a função não está funcionando como esperado, bug linha 126.
 int append_sorting(List *li, struct student st) {
   // sort by id ascendent count
   if (li == NULL)
@@ -123,7 +122,7 @@ int append_sorting(List *li, struct student st) {
       new_node->next = (*li);
       *li = new_node;
     } else {
-      new_node->next = _curr;
+      new_node->next = _prev->next;
       _prev->next = new_node;
     }
   }
