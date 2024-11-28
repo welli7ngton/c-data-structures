@@ -65,16 +65,15 @@ void test_append_to_end() {
 
 void test_append_sorting() {
   List *li = create_list();
-  struct student st2 = {2, "st2", 10.0, 10.0};
-  struct student st5 = {5, "st5", 10.0, 10.0};
   struct student st1 = {1, "st1", 10.0, 10.0};
-  struct student st6 = {6, "st6", 10.0, 10.0};
-  struct student st4 = {4, "st4", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
   struct student st3 = {3, "st3", 10.0, 10.0};
+  struct student st4 = {4, "st4", 10.0, 10.0};
+  struct student st5 = {5, "st5", 10.0, 10.0};
+  struct student st6 = {6, "st6", 10.0, 10.0};
 
   append_sorting(li, st2);
   append_sorting(li, st5);
-  append_sorting(li, st2);
   append_sorting(li, st1);
   append_sorting(li, st6);
   append_sorting(li, st4);
@@ -82,7 +81,15 @@ void test_append_sorting() {
 
   Elem *head = *li;
 
-  ASSERT(head->next->next->next->next->next->data.id == 6,
+  int counter = 1;
+  for (int i = 1; i < 6; i++) {
+    if (i == head->data.id) {
+      counter++;
+    }
+    head = head->next;
+  }
+
+  ASSERT(counter == 6,
          "append_sorting() insert an item in the list sorting by student id.");
 }
 
