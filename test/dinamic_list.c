@@ -97,6 +97,99 @@ void test_length_of_an_empty_list() {
   ASSERT(list_length(li) == 0, "should return 0 when the list is empty.");
 }
 
+void test_remove_from_start() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+
+  append_to_start(li, st1);
+  append_to_start(li, st2);
+  append_to_start(li, st3);
+
+  remove_from_start(li);
+
+  Elem *head = *li;
+
+  ASSERT(head->data.id == 2, "remove_from_start() should remove an item from "
+                             "the beggining of the linked list.");
+}
+
+void test_remove_from_end() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+
+  append_to_end(li, st1);
+  append_to_end(li, st2);
+  append_to_end(li, st3);
+
+  remove_from_end(li);
+  remove_from_end(li);
+
+  Elem *head = *li;
+
+  ASSERT(head->data.id == 1 && head->next == NULL,
+         "remove_from_end() should remove an item from the "
+         "end of list and relocate the NULL value.");
+}
+
+void test_remove_by_id_middle() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+
+  append_to_end(li, st1);
+  append_to_end(li, st2);
+  append_to_end(li, st3);
+
+  remove_by_id(li, 2);
+
+  Elem *head = *li;
+
+  ASSERT(head->data.id == 1 && head->next->data.id == 3 && list_length(li) == 2,
+         "remove_by_id() should remove an item by its id and relocate the "
+         "previous element and the next element.");
+}
+
+void test_remove_by_id_beg() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+
+  append_to_end(li, st1);
+  append_to_end(li, st2);
+  append_to_end(li, st3);
+
+  remove_by_id(li, 1);
+
+  Elem *head = *li;
+
+  ASSERT(head->data.id == 2 && head->next->data.id == 3 && list_length(li) == 2,
+         "remove_by_id() testing removing a item from the beggining.");
+}
+
+void test_remove_by_id_end() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+
+  append_to_end(li, st1);
+  append_to_end(li, st2);
+  append_to_end(li, st3);
+
+  remove_by_id(li, 3);
+
+  Elem *head = *li;
+
+  ASSERT(head->data.id == 1 && head->next->data.id == 2 && list_length(li) == 2,
+         "remove_by_id() testing removind a item from the end.");
+}
+
 int main() {
   test_create_list();
   test_is_empty();
@@ -105,5 +198,10 @@ int main() {
   test_append_sorting();
   test_list_length();
   test_length_of_an_empty_list();
+  test_remove_from_start();
+  test_remove_from_end();
+  test_remove_by_id_middle();
+  test_remove_by_id_beg();
+  test_remove_by_id_end();
   return 0;
 }
