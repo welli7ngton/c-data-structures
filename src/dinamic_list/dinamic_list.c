@@ -82,7 +82,7 @@ int append_to_end(List *li, struct student st) {
   } else {
     // saving the main head instance of the list
     Elem *temp = *li;
-    // searching for the hole list for an NULL value, that means the end of the
+    // searching for the whole list for an NULL value, that means the end of the
     // linked list.
     while (temp->next != NULL) {
       // step ahead
