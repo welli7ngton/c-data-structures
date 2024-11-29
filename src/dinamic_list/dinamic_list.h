@@ -25,3 +25,9 @@ int append_to_start(List *li, struct student st);
 int append_to_end(List *li, struct student st);
 
 int append_sorting(List *li, struct student st);
+
+int remove_from_start(List *li);
+
+int remove_from_end(List *li);
+
+int remove_by_id(List *li, int id);

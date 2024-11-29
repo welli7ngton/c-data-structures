@@ -1,6 +1,7 @@
 #include "dinamic_list.h"
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 
 List *create_list() {
   List *li = (List *)malloc(sizeof(List));
@@ -127,5 +128,71 @@ int append_sorting(List *li, struct student st) {
     }
   }
 
+  return 1;
+}
+
+int remove_from_start(List *li) {
+  if (li == NULL) {
+    return 0;
+  }
+  if ((*li) == NULL) {
+    return 0;
+  }
+  // getting the first item from the list
+  Elem *node = *li;
+  // step ahead
+  *li = node->next;
+  free(node);
+  return 1;
+}
+
+int remove_from_end(List *li) {
+  if (li == NULL) {
+    return 0;
+  }
+  if ((*li) == NULL) {
+    return 0;
+  }
+
+  Elem *_prev_node, *_curr_node = *li;
+  // Enquanto o próximo elemento for diferente de NULL, dê um passo para frente
+  while (_curr_node->next != NULL) {
+    _prev_node = _curr_node;
+    _curr_node = _curr_node->next;
+  }
+
+  // Caso a lista só tenha um item
+  if (_curr_node == (*li)) {
+    *li = _curr_node->next;
+    // caso a lista tenha mais de 1 item
+  } else {
+    _prev_node->next = _curr_node->next;
+  }
+  free(_curr_node);
+  return 1;
+}
+
+int remove_by_id(List *li, int id) {
+  if (li == NULL) {
+    return 0;
+  }
+
+  if ((*li) == NULL) {
+    return 0;
+  }
+
+  Elem *_prev_node, *_curr_node = *li;
+
+  while (_curr_node != NULL && _curr_node->data.id != id) {
+    _prev_node = _curr_node;
+    _curr_node = _curr_node->next;
+  }
+
+  if (_curr_node == *li) {
+    *li = _curr_node->next;
+  } else {
+    _prev_node->next = _curr_node->next;
+  }
+  free(_curr_node);
   return 1;
 }
