@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -g
 
 
 SOURCES = ${SRC_DIR}/${TEST}/${TEST}.c ${TEST_DIR}/${TEST}.c ${SUITE_RUNNER_DIR}/suite_runner.c 
-HEADERS = ${SRC_DIR}/${TEST}/${TEST}.h ${SUITE_RUNNER_DIR}/suite_runner.h
+HEADERS = ${SRC_DIR}/${TEST}/${TEST}.h ${TEST_DIR}/test_helpers.h ${SUITE_RUNNER_DIR}/suite_runner.h
 
 EXEC = ${TEST}.test
 
