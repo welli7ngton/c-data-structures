@@ -224,7 +224,8 @@ int main() {
       test_remove_from_end_in_an_empty_list,
       test_remove_from_an_invalid_list,
   };
+  int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
 
-  run(tests, 16, "Sequential Static List");
+  run(tests, amount_of_tests, "Sequential Static List");
   return 0;
 }

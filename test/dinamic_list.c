@@ -206,6 +206,9 @@ int main() {
       test_remove_by_id_beg,
       test_remove_by_id_end,
   };
-  run(tests, 12, "Dinamic List");
+
+  int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
+
+  run(tests, amount_of_tests, "Dinamic List");
   return 0;
 }
