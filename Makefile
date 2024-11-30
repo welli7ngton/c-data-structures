@@ -3,13 +3,14 @@ TEST ?=
 
 SRC_DIR = src
 TEST_DIR = test
+SUITE_RUNNER_DIR = test/suite_runner
 
 CC = gcc
 CFLAGS = -Wall -Wextra -g
 
 
-SOURCES = ${SRC_DIR}/${TEST}/${TEST}.c ${TEST_DIR}/${TEST}.c
-HEADERS = ${SRC_DIR}/${TEST}/${TEST}.h
+SOURCES = ${SRC_DIR}/${TEST}/${TEST}.c ${TEST_DIR}/${TEST}.c ${SUITE_RUNNER_DIR}/suite_runner.c 
+HEADERS = ${SRC_DIR}/${TEST}/${TEST}.h ${SUITE_RUNNER_DIR}/suite_runner.h
 
 EXEC = ${TEST}.test
 

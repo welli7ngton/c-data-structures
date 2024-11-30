@@ -116,7 +116,7 @@ int remove_from_start(List *li) {
 
 int remove_from_end(List *li) {
   if (li == NULL) {
-    return -1;
+    return 0;
   }
 
   if (is_empty(li)) {

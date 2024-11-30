@@ -1,4 +1,5 @@
 #include "../src/sequential_list/sequential_list.h"
+#include "./suite_runner/suite_runner.h"
 #include "./test_helpers.h"
 #include <stdio.h>
 #include <string.h>
@@ -192,24 +193,38 @@ void test_get_by_register_number() {
          "number of the student.");
 }
 
+void test_remove_from_end_in_an_empty_list() {
+  List *test_list = create_list();
+
+  ASSERT(remove_from_end(test_list) == -1, "an empty list shoud return -1.");
+}
+
+void test_remove_from_an_invalid_list() {
+  List *test_list = NULL;
+
+  ASSERT(remove_from_end(test_list) == 0, "an invalid list should return 0.");
+}
+
 int main() {
-  printf("\nRunning tests for Sequential Static Lists...\n");
-  printf("\n---------------------------------------------\n");
-  test_create_list();
-  test_appent_to_end();
-  test_free_list();
-  test_list_length();
-  test_is_full();
-  test_is_not_full();
-  test_is_empty();
-  test_appent_to_start();
-  test_append_sorting();
-  test_remove_from_start();
-  test_remove_from_end();
-  test_remove_from_index();
-  test_get_by_index();
-  test_get_by_register_number();
-  printf(GREEN "\nAll tests passed!\n" RESET);
-  printf("\n---------------------------------------------\n");
+  func tests[] = {
+      test_create_list,
+      test_appent_to_end,
+      test_free_list,
+      test_list_length,
+      test_is_full,
+      test_is_not_full,
+      test_is_empty,
+      test_appent_to_start,
+      test_append_sorting,
+      test_remove_from_start,
+      test_remove_from_end,
+      test_remove_from_index,
+      test_get_by_index,
+      test_get_by_register_number,
+      test_remove_from_end_in_an_empty_list,
+      test_remove_from_an_invalid_list,
+  };
+
+  run(tests, 16, "Sequential Static List");
   return 0;
 }

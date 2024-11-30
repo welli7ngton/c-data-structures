@@ -1,4 +1,5 @@
 #include "../src/dinamic_list/dinamic_list.h"
+#include "./suite_runner/suite_runner.h"
 #include "test_helpers.h"
 #include <stdio.h>
 #include <string.h>
@@ -191,17 +192,20 @@ void test_remove_by_id_end() {
 }
 
 int main() {
-  test_create_list();
-  test_is_empty();
-  test_append_to_start();
-  test_append_to_end();
-  test_append_sorting();
-  test_list_length();
-  test_length_of_an_empty_list();
-  test_remove_from_start();
-  test_remove_from_end();
-  test_remove_by_id_middle();
-  test_remove_by_id_beg();
-  test_remove_by_id_end();
+  func tests[] = {
+      test_create_list,
+      test_is_empty,
+      test_append_to_start,
+      test_append_to_end,
+      test_append_sorting,
+      test_list_length,
+      test_length_of_an_empty_list,
+      test_remove_from_start,
+      test_remove_from_end,
+      test_remove_by_id_middle,
+      test_remove_by_id_beg,
+      test_remove_by_id_end,
+  };
+  run(tests, 12, "Dinamic List");
   return 0;
 }
