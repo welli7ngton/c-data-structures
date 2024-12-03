@@ -191,6 +191,24 @@ void test_remove_by_id_end() {
          "remove_by_id() testing removind a item from the end.");
 }
 
+void test_get_item_by_index() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+
+  append_to_end(li, st1);
+  append_to_end(li, st2);
+  append_to_end(li, st3);
+
+  struct student st;
+
+  int result = get_element_by_index(li, &st, 1);
+
+  ASSERT((result == 1 /* && st.id == 2*/),
+         "get_element_by_index() should return 1 for a succes get.");
+}
+
 int main() {
   func tests[] = {
       test_create_list,
@@ -205,6 +223,7 @@ int main() {
       test_remove_by_id_middle,
       test_remove_by_id_beg,
       test_remove_by_id_end,
+      test_get_item_by_index,
   };
 
   int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
