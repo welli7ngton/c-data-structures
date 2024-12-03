@@ -188,6 +188,9 @@ int remove_by_id(List *li, int id) {
     _curr_node = _curr_node->next;
   }
 
+  if (_curr_node == NULL)
+    return 0; // empty list or item not found.
+
   if (_curr_node == *li) {
     *li = _curr_node->next;
   } else {
@@ -195,4 +198,43 @@ int remove_by_id(List *li, int id) {
   }
   free(_curr_node);
   return 1;
+}
+
+int get_element_by_index(List *li, struct student *st, int idx) {
+  if (li == NULL || idx < 0)
+    return 0;
+
+  if ((*li) == NULL)
+    return 0;
+
+  int count = 0;
+  Elem *node = *li;
+
+  while (node != NULL && count < idx) {
+    if (count == idx) {
+      *st = node->data;
+      return 1;
+    }
+    node = node->next;
+    count++;
+  }
+  return 0;
+}
+
+// TODO: make one test to this function
+int get_element_by_id(List *li, struct student *st, int id) {
+  if (li == NULL)
+    return 0;
+
+  Elem *node = *li;
+
+  while (node != NULL && node->data.id != id) {
+    node = node->next;
+  }
+  if (node == NULL) {
+    return 0;
+  } else {
+    *st = node->data;
+    return 1;
+  }
 }

@@ -31,3 +31,7 @@ int remove_from_start(List *li);
 int remove_from_end(List *li);
 
 int remove_by_id(List *li, int id);
+
+int get_element_by_index(List *li, struct student *st, int idx);
+
+int get_element_by_index(List *li, struct student *st, int id);
