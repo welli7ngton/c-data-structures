@@ -205,10 +205,67 @@ void test_get_item_by_index() {
 
   int result = get_element_by_index(li, &st, 1);
 
-  ASSERT((result == 1 /* && st.id == 2*/),
+  ASSERT((result == 1 && st.id == 2),
          "get_element_by_index() should return 1 for a succes get.");
 }
 
+void test_get_item_by_index_empty_list() {
+  List *li = create_list();
+
+  struct student st;
+
+  int result = get_element_by_index(li, &st, 1);
+
+  ASSERT((result == -1), "should return -1 when the list is empty.");
+}
+
+void test_get_item_by_index_empty_in_a_null_list() {
+  List *li = NULL;
+
+  struct student st;
+
+  int result = get_element_by_index(li, &st, 1);
+
+  ASSERT((result == 0), "should return 0 when the list is NULL.");
+}
+
+void test_get_item_by_id() {
+  List *li = create_list();
+  struct student st1 = {1, "st1", 10.0, 10.0};
+  struct student st2 = {2, "st2", 10.0, 10.0};
+  struct student st3 = {3, "st1", 10.0, 10.0};
+
+  append_to_end(li, st2);
+  append_to_end(li, st3);
+  append_to_end(li, st1);
+
+  struct student st;
+
+  int result = get_element_by_id(li, &st, 1);
+
+  ASSERT((result == 1 && st.id == 1), "get_element_by_id() should return the "
+                                      "instance of studnt based on its id.");
+}
+
+void test_get_item_by_id_empty_list() {
+  List *li = create_list();
+
+  struct student st;
+
+  int result = get_element_by_id(li, &st, 1);
+
+  ASSERT((result == 0), "should return 0 when the list is empty.");
+}
+
+void test_get_item_by_id_empty_in_a_null_list() {
+  List *li = NULL;
+
+  struct student st;
+
+  int result = get_element_by_id(li, &st, 1);
+
+  ASSERT((result == -1), "should return -1 when the list is NULL.");
+}
 int main() {
   func tests[] = {
       test_create_list,
@@ -224,6 +281,11 @@ int main() {
       test_remove_by_id_beg,
       test_remove_by_id_end,
       test_get_item_by_index,
+      test_get_item_by_index_empty_list,
+      test_get_item_by_index_empty_in_a_null_list,
+      test_get_item_by_id,
+      test_get_item_by_id_empty_list,
+      test_get_item_by_id_empty_in_a_null_list,
   };
 
   int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
