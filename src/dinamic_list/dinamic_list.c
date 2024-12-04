@@ -210,7 +210,7 @@ int get_element_by_index(List *li, struct student *st, int idx) {
   int count = 0;
   Elem *node = *li;
 
-  while (node != NULL && count < idx) {
+  while (node != NULL && count <= idx) {
     if (count == idx) {
       *st = node->data;
       return 1;
