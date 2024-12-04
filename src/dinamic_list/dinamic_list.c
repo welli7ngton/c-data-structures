@@ -205,7 +205,7 @@ int get_element_by_index(List *li, struct student *st, int idx) {
     return 0;
 
   if ((*li) == NULL)
-    return 0;
+    return -1;
 
   int count = 0;
   Elem *node = *li;
@@ -221,10 +221,9 @@ int get_element_by_index(List *li, struct student *st, int idx) {
   return 0;
 }
 
-// TODO: make one test to this function
 int get_element_by_id(List *li, struct student *st, int id) {
   if (li == NULL)
-    return 0;
+    return -1;
 
   Elem *node = *li;
 

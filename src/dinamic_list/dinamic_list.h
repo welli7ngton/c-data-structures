@@ -34,4 +34,4 @@ int remove_by_id(List *li, int id);
 
 int get_element_by_index(List *li, struct student *st, int idx);
 
-int get_element_by_index(List *li, struct student *st, int id);
+int get_element_by_id(List *li, struct student *st, int id);
