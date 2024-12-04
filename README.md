@@ -4,7 +4,8 @@ Bem-vindo ao repositório **Estruturas de Dados em C**! Este projeto tem como ob
 
 ## Sumário
 - [Lista Sequencial Estática](#1-lista-sequencial-estatica)
-
+- [Lista Dinamicamente Encadeada](#2-lista-dinamicamente-encadeada)
+  
 ## Estrutura do Projeto
 - **src/**: Contém os TADs das estruturas de dados implementados.
   - Exemplo atual: `sequential_list/` (lista sequencial estática).
