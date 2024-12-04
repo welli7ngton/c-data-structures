@@ -19,6 +19,12 @@ Bem-vindo ao repositório **Estruturas de Dados em C**! Este projeto tem como ob
 - Testes: [test/sequential_list.c](./test/sequential_list.c)
 - **Descrição**: Uma lista estática que armazena elementos em um array fixo, permitindo operações básicas como inserção no final, inicio, organizada (sorted), remoção por index, remoção por dado, busca por index e busca por dado. Estou usando uma estrutura de dados personalizada simulando o cadastro de um aluno para ter um dado dinâmico para trabalhar.
 
+### 2. Lista Dinamicamente Encadeada
+- Arquivo fonte: [dinamic_list.c](./src/dinamic_list/dinamic_list.c)
+- Cabeçalho: [dinamic_list.h](./src/dinamic_list/dinamic_list.h)
+- Testes: [test/dinamic_list.c](./test/dinamic_list.c)
+- **Descrição**: Uma lista dinamicamente encadeada armazena elementos em nós, onde cada nó contém um valor e um ponteiro para o próximo. Isso permite inserção e remoção eficientes de elementos, sem necessidade de realocar memória. Estou usando essa estrutura para simular o cadastro dinâmico de alunos, facilitando a adição e remoção de registros sem um tamanho fixo de lista.
+
 ## Como Usar
 
 ### Pré-requisitos
