@@ -22,3 +22,32 @@ void free_list(List *li) {
   }
   free(li);
 }
+
+int list_length(List *li){
+  // -1 if list is null
+  if (li == NULL) {
+    return -1;
+  }
+    // -1 if first item of the list is null (equals an empty list)
+  if ((*li) == NULL){
+    return 0;
+  }
+  
+  int count = 0;
+  Elem *node = *li;
+  while (node != NULL) {
+    count++;
+    node = node->next;
+  }
+  return count;
+}
+
+int is_empty(List *li){
+  if (li == NULL) {
+    return -1;
+  }
+  if ((*li) == NULL) {
+    return 1;
+  }
+  return 0;
+}

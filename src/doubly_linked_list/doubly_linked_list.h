@@ -17,3 +17,9 @@ typedef struct element Elem;
 List *create_list();
 
 void free_list(List *li);
+
+int list_length(List *li);
+
+int is_empty(List *li);
+
+int append_to_end(List *li, struct student st);
