@@ -10,9 +10,21 @@ void test_create_list() {
          "point to a NULL value.");
 }
 
+void test_is_empty() {
+  List *li = create_list();
+  ASSERT(is_empty(li),
+         "is_empty() return 1 (truthy value) if the list is empty");
+}
+
+void test_is_empty_in_a_null_list() {
+  ASSERT(is_empty(NULL) == -1, "is_empty() return -1 if the list is NULL");
+}
+
 int main() {
   func tests[] = {
       test_create_list,
+      test_is_empty,
+      test_is_empty_in_a_null_list,
   };
   int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
 
