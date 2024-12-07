@@ -13,11 +13,22 @@ void test_create_list() {
 void test_is_empty() {
   List *li = create_list();
   ASSERT(is_empty(li),
-         "is_empty() return 1 (truthy value) if the list is empty");
+         "is_empty() return 1 (truthy value) if the list is empty.");
 }
 
 void test_is_empty_in_a_null_list() {
-  ASSERT(is_empty(NULL) == -1, "is_empty() return -1 if the list is NULL");
+  ASSERT(is_empty(NULL) == -1, "is_empty() return -1 if the list is NULL.");
+}
+
+void test_list_length() {
+  List *li = create_list();
+  ASSERT(list_length(li) == 0,
+         "list_length() return the actual length of the list.");
+}
+
+void test_list_length_in_a_null_list() {
+  ASSERT(list_length(NULL) == -1,
+         "list_length() should return -1 in a not valid list.");
 }
 
 int main() {
@@ -25,6 +36,8 @@ int main() {
       test_create_list,
       test_is_empty,
       test_is_empty_in_a_null_list,
+      test_list_length,
+      test_list_length_in_a_null_list,
   };
   int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
 
