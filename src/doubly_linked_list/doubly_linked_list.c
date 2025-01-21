@@ -60,7 +60,7 @@ int append_to_start(List *li, struct student st){
 
   Elem *node = (Elem*) malloc(sizeof(Elem));
 
-  if ((*li) == NULL){
+  if ((*node) == NULL){  // verifica se a alocacao foi bem sucedida
     return -1;
   }
 
@@ -74,3 +74,53 @@ int append_to_start(List *li, struct student st){
   }
   *li = node;  // inicio da lista recebe o node.
 }
+
+int append_to_end(List *li, struct student st){
+  if (li == NULL) return -1;
+  Elem *node = (Elem*) malloc(sizeof(Elem));
+  if (node == NULL) return -1;
+
+  node->data = st;
+  node->next = NULL;
+  if((*li) == NULL){
+    // lista vazia: insercao no inicio
+    node->prev = NUll;
+    *li = node;
+    return 1;
+  } else {
+    Elem *temp = *li;
+    while (temp->next != NULL) {
+      temp = temp->next; // step ahead
+    }
+    temp->next = node; // ultimo elemento passa a ser o penultimo.
+    node->prev = temp; // novo ultimo elemento tem como elemento antecessor o antigo ultimo elemento.
+  }
+  return 1;
+}
+
+int append_to_end(List *li, struct student st){
+  if (li == NULL) return -1;
+  Elem *node = (Elem*) malloc(sizeof(Elem));
+  if (node == NULL) return -1;
+
+  node->data = st;
+  node->next = NULL;
+  if((*li) == NULL){
+    // lista vazia: insercao no inicio
+    node->prev = NUll;
+    *li = node;
+    return 1;
+  } else {
+    Elem *prev, *curr = *li;
+    while (curr != NUll && curr->data.id < st.id) {
+      prev = curr;
+      curr = curr->next;
+    }
+    if (curr == *li){
+      node->prev = NUll;
+      (*li)->prev = node;
+      node->next = (*li);
+      *li = node;
+    }
+  }
+
