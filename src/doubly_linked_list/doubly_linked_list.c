@@ -98,7 +98,7 @@ int append_to_end(List *li, struct student st){
   return 1;
 }
 
-int append_to_end(List *li, struct student st){
+int append_sorting(List *li, struct student st){
   if (li == NULL) return -1;
   Elem *node = (Elem*) malloc(sizeof(Elem));
   if (node == NULL) return -1;
@@ -107,7 +107,7 @@ int append_to_end(List *li, struct student st){
   node->next = NULL;
   if((*li) == NULL){
     // lista vazia: insercao no inicio
-    node->prev = NUll;
+    node->prev = NULL;
     *li = node;
     return 1;
   } else {
@@ -116,11 +116,18 @@ int append_to_end(List *li, struct student st){
       prev = curr;
       curr = curr->next;
     }
-    if (curr == *li){
+    if (curr == *li){  // inicio da lista
       node->prev = NUll;
       (*li)->prev = node;
       node->next = (*li);
       *li = node;
+    } else {
+      node->next = prev->next;
+      node->prev = prev;
+      if (curr != NULL){
+        curr->prev = node;
+      }
     }
+    return 1
   }
 
