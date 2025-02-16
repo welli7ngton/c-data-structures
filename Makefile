@@ -14,10 +14,12 @@ HEADERS = ${SRC_DIR}/${TEST}/${TEST}.h ${TEST_DIR}/test_helpers.h ${SUITE_RUNNER
 
 EXEC = ${TEST}.test
 
+BUILD_MESSAGE = "test builded successfully."
+
 all: ${EXEC}
 
 ${EXEC}: $(SOURCES) ${HEADERS}
-	${CC} $(CFLAGS) -o ${EXEC} $(SOURCES)
+	${CC} $(CFLAGS) -o ${EXEC} $(SOURCES) && echo ${BUILD_MESSAGE}
 
 clean:
 	rm -f *.test
