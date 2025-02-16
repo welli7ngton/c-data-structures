@@ -52,39 +52,43 @@ int is_empty(List *li) {
   return 0;
 }
 
-
-int append_to_start(List *li, struct student st){
+int append_to_start(List *li, struct student st) {
   if (li == NULL) {
     return -1;
   }
 
-  Elem *node = (Elem*) malloc(sizeof(Elem));
+  Elem *node = (Elem *)malloc(sizeof(Elem));
 
-  if ((*node) == NULL){  // verifica se a alocacao foi bem sucedida
+  if (node == NULL) { // verifica se a alocacao foi bem sucedida
     return -1;
   }
 
   node->data = st;    // adicionando novo estudante.
-  node->next = (*li)  // colocando antigo inicio da lista como proximo item.
-  node->prev = NULL;  // como o node estará no inicio da lista ele deve apontar para nulo.
+  node->next = (*li); // colocando antigo inicio da lista como proximo item.
+  node->prev =
+      NULL; // como o node estará no inicio da lista ele deve apontar para nulo.
 
   // caso o inicio da lista seja diferete de NULL (a lista nao está vazia).
-  if (*li != NULL){
-    (*li)->prev = node; // atual inicio da lista recebe o node como anterior a ele.
+  if (*li != NULL) {
+    (*li)->prev =
+        node; // atual inicio da lista recebe o node como anterior a ele.
   }
-  *li = node;  // inicio da lista recebe o node.
+  *li = node; // inicio da lista recebe o node.
+  return 1;
 }
 
-int append_to_end(List *li, struct student st){
-  if (li == NULL) return -1;
-  Elem *node = (Elem*) malloc(sizeof(Elem));
-  if (node == NULL) return -1;
+int append_to_end(List *li, struct student st) {
+  if (li == NULL)
+    return -1;
+  Elem *node = (Elem *)malloc(sizeof(Elem));
+  if (node == NULL)
+    return -1;
 
   node->data = st;
   node->next = NULL;
-  if((*li) == NULL){
+  if ((*li) == NULL) {
     // lista vazia: insercao no inicio
-    node->prev = NUll;
+    node->prev = NULL;
     *li = node;
     return 1;
   } else {
@@ -93,41 +97,44 @@ int append_to_end(List *li, struct student st){
       temp = temp->next; // step ahead
     }
     temp->next = node; // ultimo elemento passa a ser o penultimo.
-    node->prev = temp; // novo ultimo elemento tem como elemento antecessor o antigo ultimo elemento.
+    node->prev = temp; // novo ultimo elemento tem como elemento antecessor o
+                       // antigo ultimo elemento.
   }
   return 1;
 }
 
-int append_sorting(List *li, struct student st){
-  if (li == NULL) return -1;
-  Elem *node = (Elem*) malloc(sizeof(Elem));
-  if (node == NULL) return -1;
+int append_sorting(List *li, struct student st) {
+  if (li == NULL)
+    return -1;
+  Elem *node = (Elem *)malloc(sizeof(Elem));
+  if (node == NULL)
+    return -1;
 
   node->data = st;
   node->next = NULL;
-  if((*li) == NULL){
+  if ((*li) == NULL) {
     // lista vazia: insercao no inicio
     node->prev = NULL;
     *li = node;
     return 1;
   } else {
     Elem *prev, *curr = *li;
-    while (curr != NUll && curr->data.id < st.id) {
+    while (curr != NULL && curr->data.id < st.id) {
       prev = curr;
       curr = curr->next;
     }
-    if (curr == *li){  // inicio da lista
-      node->prev = NUll;
+    if (curr == *li) { // inicio da lista
+      node->prev = NULL;
       (*li)->prev = node;
       node->next = (*li);
       *li = node;
     } else {
       node->next = prev->next;
       node->prev = prev;
-      if (curr != NULL){
+      if (curr != NULL) {
         curr->prev = node;
       }
     }
-    return 1
+    return 1;
   }
-
+}
