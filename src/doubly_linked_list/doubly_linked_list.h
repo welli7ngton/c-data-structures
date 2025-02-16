@@ -1,8 +1,8 @@
-struct student {
+typedef struct student {
   int id;
   char nome[20];
   float n1, n2;
-};
+} Student;
 
 typedef struct element *List;
 
@@ -22,8 +22,8 @@ int list_length(List *li);
 
 int is_empty(List *li);
 
-int append_to_start(List *li, struct student st);
+int append_to_start(List *li, Student st);
 
-int append_sorting(List *li, struct student st);
+int append_sorting(List *li, Student st);
 
-int append_to_end(List *li, struct student st);
+int append_to_end(List *li, Student st);
