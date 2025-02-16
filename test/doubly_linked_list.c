@@ -48,6 +48,23 @@ void test_append_to_start() {
          "append_to_start() should append an item to the start of the list.");
 }
 
+void test_append_to_end() {
+  List *li = create_list();
+
+  struct student s1 = {1, "default", 10.0, 8.9};
+  struct student s2 = {2, "default", 10.0, 8.9};
+  struct student s3 = {3, "default", 10.0, 8.9};
+
+  append_to_end(li, s1);
+  append_to_end(li, s3);
+  append_to_end(li, s2);
+
+  Elem *head = *li;
+
+  ASSERT(head->data.id == 1 && head->next->data.id == 3,
+         "append_to_end() should append an item to the end of the list.");
+}
+
 int main() {
   func tests[] = {
       test_create_list,
@@ -56,6 +73,7 @@ int main() {
       test_list_length,
       test_list_length_in_a_null_list,
       test_append_to_start,
+      test_append_to_end,
   };
   int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
 
