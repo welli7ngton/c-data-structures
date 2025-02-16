@@ -65,6 +65,23 @@ void test_append_to_end() {
          "append_to_end() should append an item to the end of the list.");
 }
 
+void test_append_sorting() {
+  List *li = create_list();
+
+  struct student s1 = {1, "default", 10.0, 8.9};
+  struct student s2 = {2, "default", 10.0, 8.9};
+  struct student s3 = {3, "default", 10.0, 8.9};
+
+  append_sorting(li, s2);
+  append_sorting(li, s3);
+  append_sorting(li, s1);
+
+  Elem *head = *li;
+
+  ASSERT(head->data.id == 1 && head->next->data.id == 2,
+         "append_sorting() should append an item and sort by id.");
+}
+
 int main() {
   func tests[] = {
       test_create_list,
@@ -74,6 +91,7 @@ int main() {
       test_list_length_in_a_null_list,
       test_append_to_start,
       test_append_to_end,
+      test_append_sorting,
   };
   int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
 
