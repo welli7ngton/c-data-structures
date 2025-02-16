@@ -1,5 +1,6 @@
 #include "./doubly_linked_list.h"
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 List *create_list() {
@@ -138,3 +139,37 @@ int append_sorting(List *li, struct student st) {
     return 1;
   }
 }
+
+int remove_from_start(List *li) {
+  if (li == NULL) {
+    return -1; // lista inválida
+  }
+  if (*li == NULL) {
+    return 1; // lista vazia
+  }
+
+  Elem *head = *li; // Primeiro elemento
+  *li = head->next; // Atualiza o ponteiro da lista para o próximo nó
+
+  if (*li != NULL) { // Verifica se a lista ainda tem elementos
+    (*li)->prev = NULL;
+  }
+
+  free(head); // Libera o nó antigo **somente depois das atualizações**
+  return 1;
+}
+
+// int main() {
+//   List *li = create_list();
+
+//   struct student s1 = {1, "default", 10.0, 8.9};
+//   struct student s2 = {2, "default", 10.0, 8.9};
+//   struct student s3 = {3, "default", 10.0, 8.9};
+
+//   append_sorting(li, s2);
+//   append_sorting(li, s3);
+//   append_sorting(li, s1);
+
+//   remove_from_start(li);
+//   return 1;
+// }

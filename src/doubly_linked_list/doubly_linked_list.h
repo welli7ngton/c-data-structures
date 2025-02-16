@@ -27,3 +27,5 @@ int append_to_start(List *li, Student st);
 int append_sorting(List *li, Student st);
 
 int append_to_end(List *li, Student st);
+
+int remove_from_start(List *li);

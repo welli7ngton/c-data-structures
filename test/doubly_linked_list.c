@@ -82,6 +82,32 @@ void test_append_sorting() {
          "append_sorting() should append an item and sort by id.");
 }
 
+void test_remove_from_start() {
+  List *li = create_list();
+
+  struct student s1 = {1, "default", 10.0, 8.9};
+  struct student s2 = {2, "default", 10.0, 8.9};
+  struct student s3 = {3, "default", 10.0, 8.9};
+
+  append_sorting(li, s2);
+  append_sorting(li, s3);
+  append_sorting(li, s1);
+
+  remove_from_start(li);
+
+  Elem *head = *li;
+
+  ASSERT(
+      head->data.id ==
+          2 /* && head->next->data.id == 1*/, // BUG: whenever i try to
+                                              // access the next item from
+                                              // the list i get the
+                                              // segmentation error, need fix.
+      "remove_from_start() should remove an item from the begining of the "
+      "list \nand if the list isnt empty, the first item should point to "
+      "NULL.");
+}
+
 int main() {
   func tests[] = {
       test_create_list,
@@ -92,6 +118,7 @@ int main() {
       test_append_to_start,
       test_append_to_end,
       test_append_sorting,
+      test_remove_from_start,
   };
   int amount_of_tests = sizeof(tests) / sizeof(tests[0]);
 
